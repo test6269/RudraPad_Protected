@@ -1,0 +1,5 @@
+{
+  "name": "RudraPad",
+  "description": "A powerful and elegant notepad with rich-text editing. Features include bold, italic, font size adjustment, undo/redo, dark/light modes, search, and the ability to download notes as .txt files. All your notes are saved securely in your browser.",
+  "requestFramePermissions": []
+}

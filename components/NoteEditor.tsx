@@ -97,10 +97,10 @@ const NoteEditor: React.FC<NoteEditorProps> = ({ activeNote, onUpdateNote, onTog
 
   if (!activeNote) {
     return (
-      <div className="flex flex-col items-center justify-center h-full text-gray-400 dark:text-gray-500">
+      <div className="flex flex-col items-center justify-center h-full text-palette-text-secondary dark:text-gray-500">
          <button
             onClick={onToggleSidebar}
-            className="p-2 rounded-md text-gray-500 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 hover:text-gray-800 dark:hover:text-gray-200 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 absolute top-4 left-4"
+            className="p-2 rounded-md text-palette-text-secondary dark:text-gray-400 hover:bg-white dark:hover:bg-gray-700 hover:text-palette-text dark:hover:text-gray-200 transition-colors focus:outline-none focus:ring-2 focus:ring-palette-accent absolute top-4 left-4"
             aria-label="Toggle sidebar"
         >
             <MenuIcon />
@@ -111,33 +111,33 @@ const NoteEditor: React.FC<NoteEditorProps> = ({ activeNote, onUpdateNote, onTog
   }
   
   return (
-    <div className="flex flex-col h-full bg-gray-50 dark:bg-gray-900">
-      <div className="p-2 md:p-4 border-b border-gray-200 dark:border-gray-700 flex justify-between items-center gap-2 flex-shrink-0 flex-wrap">
+    <div className="flex flex-col h-full bg-palette-bg dark:bg-gray-900">
+      <div className="p-2 md:p-4 border-b border-palette-border dark:border-gray-700 flex justify-between items-center gap-2 flex-shrink-0 flex-wrap">
         <button
             onClick={onToggleSidebar}
-            className="p-2 rounded-md text-gray-500 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 hover:text-gray-800 dark:hover:text-gray-200 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="p-2 rounded-md text-palette-text-secondary dark:text-gray-400 hover:bg-white dark:hover:bg-gray-700 hover:text-palette-text dark:hover:text-gray-200 transition-colors focus:outline-none focus:ring-2 focus:ring-palette-accent"
             aria-label="Toggle sidebar"
         >
             <MenuIcon />
         </button>
         
         {/* Toolbar */}
-        <div className="flex items-center gap-1 bg-gray-100 dark:bg-gray-800 p-1 rounded-md">
-            <button onClick={() => handleFormat('undo')} className="p-2 rounded-md hover:bg-gray-200 dark:hover:bg-gray-700" aria-label="Undo"><UndoIcon /></button>
-            <button onClick={() => handleFormat('redo')} className="p-2 rounded-md hover:bg-gray-200 dark:hover:bg-gray-700" aria-label="Redo"><RedoIcon /></button>
-            <div className="w-px h-6 bg-gray-300 dark:bg-gray-600 mx-1"></div>
-            <button onClick={() => handleFormat('bold')} className="p-2 rounded-md hover:bg-gray-200 dark:hover:bg-gray-700" aria-label="Bold"><BoldIcon /></button>
-            <button onClick={() => handleFormat('italic')} className="p-2 rounded-md hover:bg-gray-200 dark:hover:bg-gray-700" aria-label="Italic"><ItalicIcon /></button>
-            <div className="w-px h-6 bg-gray-300 dark:bg-gray-600 mx-1"></div>
+        <div className="flex items-center gap-1 bg-white dark:bg-gray-800 p-1 rounded-md">
+            <button onClick={() => handleFormat('undo')} className="p-2 rounded-md hover:bg-palette-bg dark:hover:bg-gray-700" aria-label="Undo"><UndoIcon /></button>
+            <button onClick={() => handleFormat('redo')} className="p-2 rounded-md hover:bg-palette-bg dark:hover:bg-gray-700" aria-label="Redo"><RedoIcon /></button>
+            <div className="w-px h-6 bg-palette-border dark:bg-gray-600 mx-1"></div>
+            <button onClick={() => handleFormat('bold')} className="p-2 rounded-md hover:bg-palette-bg dark:hover:bg-gray-700" aria-label="Bold"><BoldIcon /></button>
+            <button onClick={() => handleFormat('italic')} className="p-2 rounded-md hover:bg-palette-bg dark:hover:bg-gray-700" aria-label="Italic"><ItalicIcon /></button>
+            <div className="w-px h-6 bg-palette-border dark:bg-gray-600 mx-1"></div>
             <select 
                 defaultValue="3" 
                 onChange={e => handleFormat('fontSize', e.target.value)} 
-                className="p-2 rounded-md bg-transparent hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none appearance-none text-center"
+                className="p-2 rounded-md bg-transparent hover:bg-palette-bg dark:hover:bg-gray-700 focus:outline-none appearance-none text-center"
             >
                 {FONT_SIZES.map(f => <option key={f.value} value={f.value}>{f.name}</option>)}
             </select>
-             <div className="w-px h-6 bg-gray-300 dark:bg-gray-600 mx-1"></div>
-            <button onClick={handleDownload} className="p-2 rounded-md hover:bg-gray-200 dark:hover:bg-gray-700" aria-label="Download"><DownloadIcon /></button>
+             <div className="w-px h-6 bg-palette-border dark:bg-gray-600 mx-1"></div>
+            <button onClick={handleDownload} className="p-2 rounded-md hover:bg-palette-bg dark:hover:bg-gray-700" aria-label="Download"><DownloadIcon /></button>
         </div>
         
         <div className="flex items-center gap-4">
@@ -145,16 +145,16 @@ const NoteEditor: React.FC<NoteEditorProps> = ({ activeNote, onUpdateNote, onTog
           <button
             onClick={handleSave}
             disabled={!isDirty}
-            className="px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-md hover:bg-blue-700 disabled:bg-gray-300 dark:disabled:bg-gray-600 disabled:cursor-not-allowed disabled:text-gray-500 dark:disabled:text-gray-400 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-blue-500"
+            className="px-4 py-2 text-sm font-medium text-white bg-palette-accent rounded-md hover:bg-palette-accent-hover disabled:bg-palette-border dark:disabled:bg-gray-600 disabled:cursor-not-allowed disabled:text-gray-500 dark:disabled:text-gray-400 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-palette-bg focus:ring-palette-accent"
           >
             Save
           </button>
-          <button onClick={onToggleTheme} className="p-2 rounded-md hover:bg-gray-200 dark:hover:bg-gray-700">
+          <button onClick={onToggleTheme} className="p-2 rounded-md hover:bg-white dark:hover:bg-gray-700">
               {theme === 'light' ? <MoonIcon /> : <SunIcon />}
           </button>
           <button
             onClick={onLock}
-            className="p-2 rounded-md text-gray-500 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 hover:text-gray-800 dark:hover:text-gray-200 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="p-2 rounded-md text-palette-text-secondary dark:text-gray-400 hover:bg-white dark:hover:bg-gray-700 hover:text-palette-text dark:hover:text-gray-200 transition-colors focus:outline-none focus:ring-2 focus:ring-palette-accent"
             aria-label="Lock RudraPad"
           >
             <LockIcon />
@@ -167,7 +167,7 @@ const NoteEditor: React.FC<NoteEditorProps> = ({ activeNote, onUpdateNote, onTog
           value={title}
           onChange={e => { setTitle(e.target.value); setIsDirty(true); }}
           placeholder="Note Title"
-          className="w-full bg-transparent text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none mb-4"
+          className="w-full bg-transparent text-3xl md:text-4xl font-bold text-palette-text dark:text-gray-100 placeholder-palette-text-secondary dark:placeholder-gray-500 focus:outline-none mb-4"
         />
         <div
           ref={editorRef}
@@ -175,10 +175,10 @@ const NoteEditor: React.FC<NoteEditorProps> = ({ activeNote, onUpdateNote, onTog
           contentEditable={true}
           suppressContentEditableWarning={true}
           data-placeholder="Start writing..."
-          className={`w-full flex-1 bg-transparent text-base text-gray-800 dark:text-gray-200 resize-none focus:outline-none prose dark:prose-invert max-w-none relative empty:before:content-[attr(data-placeholder)] empty:before:absolute empty:before:top-0 empty:before:left-0 empty:before:text-gray-400 dark:empty:before:text-gray-500 empty:before:pointer-events-none`}
+          className={`w-full flex-1 bg-transparent text-base text-palette-text dark:text-gray-200 resize-none focus:outline-none prose dark:prose-invert max-w-none relative empty:before:content-[attr(data-placeholder)] empty:before:absolute empty:before:top-0 empty:before:left-0 empty:before:text-palette-text-secondary dark:empty:before:text-gray-500 empty:before:pointer-events-none`}
         />
       </div>
-      <div className="p-2 border-t border-gray-200 dark:border-gray-700 text-xs text-gray-500 dark:text-gray-400 text-right">
+      <div className="p-2 border-t border-palette-border dark:border-gray-700 text-xs text-palette-text-secondary dark:text-gray-400 text-right">
         <span>Words: {wordCount}</span>
         <span className="mx-2">|</span>
         <span>Characters: {charCount}</span>

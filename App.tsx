@@ -134,7 +134,7 @@ const App: React.FC = () => {
   }
 
   return (
-    <div className="flex h-screen font-sans text-gray-800 bg-gray-50 dark:bg-gray-900 dark:text-gray-200">
+    <div className="flex h-screen font-sans text-palette-text bg-palette-bg dark:bg-gray-900 dark:text-gray-200">
       {isSidebarVisible && (
         <NoteList
           notes={filteredNotes}
